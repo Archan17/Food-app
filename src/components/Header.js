@@ -1,10 +1,10 @@
 //Header Component
-import { LOGO_URL } from "../utils/constants";
+import logo from "../image/logo.png";
 const Header = () => {
   return (
     <div className="header">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+        <img className="logo" src={logo} />
       </div>
       <div className="nav-items">
         <ul>

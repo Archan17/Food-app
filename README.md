@@ -14,3 +14,8 @@
 - Diagnostincs - Good Error handling
 - Https
 - Tree Shaking - Remove Unused Code
+
+# Hooks
+
+- It is normal js functions
+- useState() , useEffect()
