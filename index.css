@@ -4,14 +4,16 @@
   display: flex;
   justify-content: space-between;
   position: fixed;
-  margin: auto;
   top: 0;
   left: 0;
   right: 0;
   background-color: whitesmoke;
   font-family: Arial, Helvetica, sans-serif;
 }
-
+.container{
+  display: flex;
+  margin: auto;
+}
 .logo {
   width: 150px;
 }
@@ -75,6 +77,7 @@
 .search-btn{
   padding:1rem;
   border-radius: 6px;
+  cursor: pointer;
 }
 .rated-btn{
   padding-left:1rem;
@@ -112,4 +115,25 @@
 .btn-login {
   margin: 1rem;
   cursor: pointer;
+}
+
+.menu{
+  margin-top: 130px;
+}
+
+.custom-link{
+  color:#000;
+  text-decoration: none;
+}
+
+.about-us{
+  margin-top: 150px;
+}
+
+.user-card{
+  background-color: #f0f0f0;
+  border: 0.5px solid #f0f0f0;
+  margin:10px;
+  padding: 20px;
+  border-radius: 10px;
 }

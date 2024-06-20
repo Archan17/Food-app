@@ -19,3 +19,11 @@
 
 - It is normal js functions
 - useState() , useEffect()
+
+# Tasks
+
+- Create a restaurant menu page
+- Use resid as a dynamic routing
+- use useeffect to fetch the api
+- convert it to json
+- Use usestate to change the data
