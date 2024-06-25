@@ -1,45 +1,29 @@
 import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
 import Shimmer from "../utils/Shimmer.js";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus.js";
+import useRestaurantData from "../utils/useRestaurantData.js";
 
 const Body = () => {
-  const [listofRestaurant, setListOfRestaurant] = useState([]);
-  const [search, setSearch] = useState("");
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  console.log("Body Rendered");
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { listofRestaurant, filteredRestaurant, search, setSearch } =
+    useRestaurantData();
 
-  async function fetchData() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-    );
+  const onlineStatus = useOnlineStatus();
 
-    const json = await data.json();
-
-    console.log(json);
-    setListOfRestaurant(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurant(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  }
+  if (onlineStatus === false)
+    return <h1 className="offline-status">Please Check your internet</h1>;
 
   // Conditional Rendering
   if (listofRestaurant.length === 0) {
     return <Shimmer />;
   }
-
   return (
     <div className="body">
-      <div className="filter">
-        <div className="Search">
+      <div className="flex">
+        <div className="m-4 p-4">
           <input
             type="text"
-            className="search-bar"
+            className="border border-solid border-black m-1 p-2 rounded-lg"
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
@@ -52,13 +36,13 @@ const Body = () => {
               );
               setFilteredRestaurant(filteredRestaurant);
             }}
-            className="search-btn"
+            className="px-4 py-2 bg-blue-300 m-4 rounded-lg"
           >
             Search
           </button>
         </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap justify-center">
         {filteredRestaurant.map((restaurant) => (
           <Link
             to={"/restaurant/" + restaurant.info.id}

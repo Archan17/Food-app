@@ -1,38 +1,30 @@
 //Header Component
 import logo from "../image/logo.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 const Header = () => {
   const [btnLogin, setbtnLogin] = useState("Login");
-  useEffect(() => {
-    console.log("UseEffect Called");
-  }, [btnLogin]);
-  console.log("Header Rendered");
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={logo} />
+    <div className="flex justify-between bg-pink-100">
+      <div>
+        <img className="w-44" src={logo} />
       </div>
-      <div className="nav-items">
-        <ul>
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4 gap-5">
           <li>
-            <Link to="/" className="custom-link">
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about" className="custom-link">
-              About Us
-            </Link>
+            <Link to="/grocery">Grocery</Link>
           </li>
           <li>
-            <Link to="/contact" className="custom-link">
-              Contact Us
-            </Link>
+            <Link to="/about">About Us</Link>
           </li>
-          <li className="custom-link">Cart</li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
+          <li>Cart</li>
           <button
-            className="btn-login"
             onClick={() => {
               btnLogin === "Login"
                 ? setbtnLogin("Logout")

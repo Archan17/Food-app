@@ -2,37 +2,36 @@ import React from "react";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
-    console.log("Child Constructor");
     this.state = {
-      count: 0,
+      userInfo: {
+        name: "unkonwn",
+        location: "Not Known",
+      },
     };
   }
-  componentDidMount() {
-    console.log("Child Component did mount");
+  async componentDidMount() {
+    // API CALL
+
+    const data = await fetch("https://api.github.com/users/Archan17");
+    const json = await data.json();
+    console.log(json);
+    this.setState({
+      userInfo: json,
+    });
+
+    console.log("Did Mount called");
   }
 
   render() {
-    const { name, location, email } = this.props;
-    const { count } = this.state;
-    console.log("Child Render");
+    const { name, location, avatar_url } = this.state.userInfo;
+    console.log("Component Rendered");
     return (
       <>
         <div className="container">
           <div className="user-card">
-            <h1>Count = {count}</h1>
-            <button
-              className="search-btn"
-              onClick={() => {
-                this.setState({
-                  count: this.state.count + 1,
-                });
-              }}
-            >
-              Button
-            </button>
+            <img src={avatar_url} alt="" />
             <h2>Name : {name}</h2>
             <h2>Location : {location}</h2>
-            <h2>Email : {email}</h2>
           </div>
         </div>
       </>
