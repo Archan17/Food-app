@@ -12,7 +12,7 @@ const useRestaurantData = () => {
   async function fetchData() {
     const data = await fetch(DATA_API_URL);
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     const restaurants =
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
@@ -25,7 +25,7 @@ const useRestaurantData = () => {
       res.info.name.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredRestaurant(filtered);
-  }, [search, filteredRestaurant]);
+  }, [search, listofRestaurant]);
 
   return {
     listofRestaurant,

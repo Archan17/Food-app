@@ -12,7 +12,7 @@ import Shimmer from "./src/utils/Shimmer.js";
 const Grocery = lazy(() => import("./src/components/Grocery.js"));
 
 const AppLayout = () => {
-  console.log(<Body />);
+  // console.log(<Body />);
   return (
     <div className="app">
       <Header />
