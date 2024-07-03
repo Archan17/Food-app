@@ -8,16 +8,21 @@ import RestaurantMenu from "./src/components/RestaurantMenu.js";
 import { Error } from "./src/components/Error.js";
 import ContactUs from "./src/components/ContactUs.js";
 import Shimmer from "./src/utils/Shimmer.js";
+import { Provider } from "react-redux";
+import appStore from "./src/utils/appStore.js";
+import Cart from "./src/components/Cart.js";
 
 const Grocery = lazy(() => import("./src/components/Grocery.js"));
 
 const AppLayout = () => {
   // console.log(<Body />);
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </Provider>
   );
 };
 
@@ -49,6 +54,10 @@ const appRouter = createBrowserRouter([
             <Grocery />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
